@@ -15,7 +15,9 @@ pub fn build(b: *std.build.Builder) void {
         "utf8proc.c",
     };
 
-    lib.addCSourceFiles(&source_files, &[_][]const u8{});
+    lib.addCSourceFiles(.{
+        .files = &source_files
+    });
     lib.linkLibC();
     b.installFile("utf8proc.h", "include/utf8proc.h");
     b.installArtifact(lib);
