@@ -16,7 +16,10 @@ pub fn build(b: *std.build.Builder) void {
     };
 
     lib.addCSourceFiles(.{
-        .files = &source_files
+        .files = &source_files,
+        .flags = &[_][]const u8{
+            "-DUTF8PROC_STATIC",
+        },
     });
     lib.linkLibC();
     b.installFile("utf8proc.h", "include/utf8proc.h");
