@@ -22,6 +22,6 @@ pub fn build(b: *std.Build) void {
         },
     });
     lib.linkLibC();
-    b.installFile("utf8proc.h", "include/utf8proc.h");
+    lib.installHeader(b.path("utf8proc.h"), "utf8proc.h");
     b.installArtifact(lib);
 }
